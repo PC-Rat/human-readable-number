@@ -1,4 +1,4 @@
-function toReadable(number) {
+module.exports = function toReadable(number) {
 	//fail to do it myself, so:
 	//npm install number-to-words
 	//and!
@@ -7,31 +7,63 @@ function toReadable(number) {
 	//converter.toWordsOrdinal(n);
 	//it's really cool
 
-	const ones = [/*'zero',*/ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-	const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-	const decs = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-	const huns = ['hundred'];
+	const ones = [
+		//"zero",
+		"one",
+		"two",
+		"three",
+		"four",
+		"five",
+		"six",
+		"seven",
+		"eight",
+		"nine"
+	];
+	const teens = [
+		"ten",
+		"eleven",
+		"twelve",
+		"thirteen",
+		"fourteen",
+		"fifteen",
+		"sixteen",
+		"seventeen",
+		"eighteen",
+		"nineteen"
+	];
+	const decs = [
+		"twenty",
+		"thirty",
+		"forty",
+		"fifty",
+		"sixty",
+		"seventy",
+		"eighty",
+		"ninety"
+	];
+	const huns = ["hundred"];
 
-	const getOnes = (ones) => {
+	const getOnes = ones => {
 		for (let i = 0; i++; i < ones.length) {
-			return ones[i];
+			console.log(`${ones[i]}\n`);
 		}
-		console.log(`${ones[i]}\n`);
 	};
-	const getTeens = (teens) => {
+
+
+	const getTeens = teens => {
 		for (let j = 0; j++; j < teens.length) {
-			return teens[j];
+			console.log(`${teens[j]}\n`);
 		}
-		console.log(`${teens[j]}\n`);
 	};
-	const getDecs = (decs) => {
+
+	const getDecs = decs => {
 		for (let n = 0; n++; n < decs.length) {
-			return decs[n];
+			console.log(`${decs[n]}\n`);
 		}
-		console.log(`${decs[n]}\n`);
 	};
-	const getHuns = (`${getOnes}`,
-		'hundred');
+
+	const getHuns = (`${getOnes}, hundred`);
 	console.log(getHuns);
+
 	return number;
 }
