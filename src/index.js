@@ -7,71 +7,70 @@ module.exports = function toReadable(number) {
 	//converter.toWordsOrdinal(n);
 	//it's really cool
 
-	const ones = [
-		//"zero",
-		"one",
-		"two",
-		"three",
-		"four",
-		"five",
-		"six",
-		"seven",
-		"eight",
-		"nine"
-	];
-	const teens = [
-		"ten",
-		"eleven",
-		"twelve",
-		"thirteen",
-		"fourteen",
-		"fifteen",
-		"sixteen",
-		"seventeen",
-		"eighteen",
-		"nineteen"
-	];
-	const decs = [
-		"twenty",
-		"thirty",
-		"forty",
-		"fifty",
-		"sixty",
-		"seventy",
-		"eighty",
-		"ninety"
-	];
 	const huns = ["hundred"];
 
 	number = number.toString();
-	number = number.replace(/[\, ]/g, "");
+	const numberSplit = number.split('');
+	number = number.replace(/[\, ]/g, '');
 
-	const numberSplit = number.split("");
+	const wordsResult = [];
 
-	const str = "";
+	const matrix = [
+		[
+			" zero",
+			" one",
+			" two",
+			" three",
+			" four",
+			" five",
+			" six",
+			" seven",
+			" eight",
+			" nine"
+		],
+		[
+			" ten",
+			" eleven",
+			" twelve",
+			" thirteen",
+			" fourteen",
+			" fifteen",
+			" sixteen",
+			" seventeen",
+			" eighteen",
+			" nineteen"
+		],
+		[
+			" twenty",
+			" thirty",
+			" forty",
+			" fifty",
+			" sixty",
+			" seventy",
+			" eighty",
+			" ninety"
+		]
+	];
+	for (let i = 0; i < matrix.length; i++) {
+		let res = '';
+		let row = '';
 
-	const getOnes = ones => {
-		for (let i = 0; i++; i < ones.length) {
-			/*logEachElement(ones);
-			console.log(`${ones[i]}\n`);*/
-			str += ones[numberSplit[i]] + " ";
+		for (let j = 0; j < matrix[0].length; j++) {
+			res += matrix[0][j];
 		}
-	};
 
-	const getTeens = teens => {
-		for (let j = 0; j++; j < teens.length) {
-			console.log(`${teens[j]}\n`);
+		for (let k = 0; k < matrix[1].length; k++) {
+			res += matrix[1][k];
 		}
-	};
 
-	const getDecs = decs => {
-		for (let n = 0; n++; n < decs.length) {
-			console.log(`${decs[n]}\n`);
+		for (let n = 0; n < matrix[2].length; n++) {
+			res += matrix[2][n];
+
+			row += matrix[2][n] + matrix[0][i];
 		}
-	};
 
-	const getHuns = `${getOnes}, hundred`;
-	console.log(getHuns);
+		wordsResult.push(res, row);
+	}
 
-	return `${number}, ${str}`;
-};
+	return (`${number},  ${wordsResult}\n`);
+}
