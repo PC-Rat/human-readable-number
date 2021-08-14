@@ -6,45 +6,105 @@ module.exports = function toReadable(number) {
 	//converter.toWords(n);
 	//converter.toWordsOrdinal(n);
 	//it's really cool
-var dg = ['zero','one','two','three','four', 'five','six','seven','eight','nine'];
- var tn = ['ten','eleven','twelve','thirteen', 'fourteen','fifteen','sixteen', 'seventeen','eighteen','nineteen'];
- var tw = ['twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety'];
 
-function toWords(s) {
-    s = s.toString();
-    s = s.replace(/[\, ]/g,'');
+	// const ones = [
+	// 	//"zero",
+	// 	"one",
+	// 	"two",
+	// 	"three",
+	// 	"four",
+	// 	"five",
+	// 	"six",
+	// 	"seven",
+	// 	"eight",
+	// 	"nine"
+	// ];
+	// const teens = [
+	// 	"ten",
+	// 	"eleven",
+	// 	"twelve",
+	// 	"thirteen",
+	// 	"fourteen",
+	// 	"fifteen",
+	// 	"sixteen",
+	// 	"seventeen",
+	// 	"eighteen",
+	// 	"nineteen"
+	// ];
+	// const decs = [
+	// 	"twenty",
+	// 	"thirty",
+	// 	"forty",
+	// 	"fifty",
+	// 	"sixty",
+	// 	"seventy",
+	// 	"eighty",
+	// 	"ninety"
+	// ];
+	const huns = ["hundred"];
 
-    var n = s.split(''); 
-    var str = '';
-    var sk = 0;
-    for (var i=0;   i < x;  i++) {
-        if ((x-i)%3==2) { 
-            if (n[i] == '1') {
-                str += tn[Number(n[i+1])] + ' ';
-                i++;
-                sk=1;
-            } else if (n[i]!=0) {
-                str += tw[n[i]-2] + ' ';
-                sk=1;
-            }
-        } else if (n[i]!=0) { // 0235
-            str += dg[n[i]] +' ';
-            if ((x-i)%3==0) str += 'hundred ';
-            sk=1;
-        }
-        if ((x-i)%3==1) {
-            if (sk)
-                str += th[(x-i-1)/3] + ' ';
-            sk=0;
-        }
-    }
+	number = number.toString();
+	const numberSplit = number.split('');
+	number = number.replace(/[\, ]/g, '');
 
-    if (x != s.length) {
-        var y = s.length;
-        str += 'point ';
-        for (var i=x+1; i<y; i++)
-            str += dg[n[i]] +' ';
-    }
-    return str.replace(/\s+/g,' ');
-}
+	const wordsResult = [];
+
+	const matrix = [
+		[
+			" zero",
+			" one",
+			" two",
+			" three",
+			" four",
+			" five",
+			" six",
+			" seven",
+			" eight",
+			" nine"
+		],
+		[
+			" ten",
+			" eleven",
+			" twelve",
+			" thirteen",
+			" fourteen",
+			" fifteen",
+			" sixteen",
+			" seventeen",
+			" eighteen",
+			" nineteen"
+		],
+		[
+			" twenty",
+			" thirty",
+			" forty",
+			" fifty",
+			" sixty",
+			" seventy",
+			" eighty",
+			" ninety"
+		]
+	];
+	for (let i = 0; i < matrix.length; i++) {
+		let res = '';
+		let row = '';
+
+		for (let j = 0; j < matrix[0].length; j++) {
+			res += matrix[0][j];
+		}
+
+		for (let k = 0; k < matrix[1].length; k++) {
+			res += matrix[1][k];
+		}
+
+		for (let n = 0; n < matrix[2].length; n++) {
+			res += matrix[2][n];
+
+			row += matrix[2][n] + matrix[0][i];
+		}
+
+		wordsResult.push(res, row);
+	}
+
+	return (`${number},  ${wordsResult}\n`);
 }
