@@ -1,4 +1,4 @@
-module.exports = function toReadable(number) {
+function toReadable(number) {
 	//fail to do it myself, so:
 	//npm install number-to-words
 	//and!
@@ -9,16 +9,29 @@ module.exports = function toReadable(number) {
 
 	const ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 	const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-	/*const decs = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];*/
+	const decs = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+	const huns = ['hundred'];
 
-	const getOnes = (ones, i) => {
-		for (i = 0; i++; i < ones.length) {
-			return ones;
+	const getOnes = (ones) => {
+		for (let i = 0; i++; i < ones.length) {
+			return ones[i];
 		}
+		console.log(`${ones[i]}\n`);
 	};
-	const getTeens = (teens, i) => {
-		for (i = 0; i++; i < teens.length) {
-			return teens;
+	const getTeens = (teens) => {
+		for (let j = 0; j++; j < teens.length) {
+			return teens[j];
 		}
+		console.log(`${teens[j]}\n`);
 	};
+	const getDecs = (decs) => {
+		for (let n = 0; n++; n < decs.length) {
+			return decs[n];
+		}
+		console.log(`${decs[n]}\n`);
+	};
+	const getHuns = (`${getOnes}`,
+		'hundred');
+	console.log(getHuns);
+	return number;
 }
