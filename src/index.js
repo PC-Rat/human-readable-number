@@ -43,17 +43,24 @@ module.exports = function toReadable(number) {
 	];
 	const huns = ["hundred"];
 
+	number = number.toString();
+	number = number.replace(/[\, ]/g, '');
+
+	const numberSplit = number.split('');
+
+	const str = '';
+
 	const getOnes = ones => {
 		for (let i = 0; i++; i < ones.length) {
-            logEachElement(ones);
-			console.log(`${ones[i]}\n`);
+			/*logEachElement(ones);
+			console.log(`${ones[i]}\n`);*/
+			str += ones[numberSplit[i]] + ' ';
 		}
 	};
 
 
 	const getTeens = teens => {
 		for (let j = 0; j++; j < teens.length) {
-            logEachElement(teens);
 			console.log(`${teens[j]}\n`);
 		}
 	};
