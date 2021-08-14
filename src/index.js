@@ -7,7 +7,7 @@ function toReadable(number) {
 	//converter.toWordsOrdinal(n);
 	//it's really cool
 
-	const ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+	const ones = [/*'zero',*/ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 	const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 	const decs = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 	const huns = ['hundred'];
